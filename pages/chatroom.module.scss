@@ -1,0 +1,147 @@
+@import '../styles/vars.scss';
+.scroller {
+  width: 300px;
+  height: 100px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+.chatroom {
+  padding: 1rem;
+  margin: 3% 0% 3% 0%;
+  width: 90%;
+  height: 850px;
+
+  background-color: #f5f7fb;
+  margin-right: auto;
+  margin-left: auto;
+  .chatroomNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    .chatroomName {
+      font-size: 1.4rem;
+      font-weight: 700;
+      &::after {
+        content: '|';
+        background: $blueGreen;
+        display: block;
+        font-size: 3px;
+        font-weight: 900;
+      }
+    }
+    a {
+      padding: 0.7rem;
+      font-weight: 500;
+      border: white solid 1px;
+      border-radius: 1rem;
+      background-color: white;
+      &:hover {
+        cursor: pointer;
+        color: $blueGreen;
+        &::after {
+          content: '|';
+          background: $blueGreen;
+          display: block;
+          font-size: 0.1rem;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+  .ChatForm {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+    margin-top: 3%;
+    padding: 1rem;
+    width: 100%;
+    height: 765px;
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .chatMessages {
+      height: 650px;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column-reverse;
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 100px;
+
+        box-shadow: inset 3px 2px 55px 0 rgba($blueGreen, 5.5);
+      }
+    }
+    .chatInputs {
+      margin-top: 2%;
+
+      .chatFormInput {
+        width: 100%;
+        align-items: center;
+
+        display: flex;
+        justify-content: flex-end;
+        input {
+          width: 80%;
+          height: 4rem;
+          font-size: 1.4rem;
+          border-radius: 2rem;
+          border: $backgroundColor solid 1px;
+          background: #f5f7fb;
+          line-height: 3rem;
+          padding-left: 24px;
+        }
+      }
+
+      button {
+        margin-left: 1rem;
+        background-color: $blueGreen;
+        height: 4rem;
+        line-height: 4rem;
+        width: 4rem;
+        border: white solid 1px;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: $tabletSize) {
+  .chatroom {
+    margin-top: 1%;
+    height: 875px;
+    .chatroomNav {
+      .chatroomName {
+        font-size: 1.8rem;
+      }
+      a {
+        margin-top: 2%;
+        padding: 1.2rem;
+        border-radius: 2rem;
+      }
+    }
+    .ChatForm {
+      width: 85%;
+      .chatInputs {
+        .chatFormInput {
+          input {
+            width: 85%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: $desktopSize) {
+  .chatroom {
+    width: 75rem;
+  }
+}
