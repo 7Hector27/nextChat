@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import useSWR from 'swr';
-import { getDatabase, ref, child, push, update } from 'firebase/database';
+import {
+  getDatabase,
+  ref,
+  child,
+  push,
+  update,
+  remove,
+  set,
+} from 'firebase/database';
 import {
   useList,
   useListVals,
@@ -84,7 +92,7 @@ const Chatroom = () => {
 
   useEffect(() => {
     if (loading === false) {
-      const f = Object.keys(value).map((k) => value[k]);
+      const f = Object?.keys(value).map((k) => value[k]);
       f.pop();
       setMessages(f);
     }
@@ -95,7 +103,7 @@ const Chatroom = () => {
       <div className={styles.chatroom}>
         <div className={styles.chatroomNav}>
           <div className={styles.chatroomName}>NextChat</div>
-          <a onClick={() => logoutHandler()}>Signout Button</a>
+          <a onClick={() => logoutHandler()}>Signout</a>
         </div>
         <div className={styles.ChatForm}>
           <div className={styles.chatMessages}>

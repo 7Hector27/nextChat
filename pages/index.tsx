@@ -3,9 +3,10 @@ import styles from '../styles/index.module.scss';
 import { useAuth } from '../firebase/auth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set, onValue } from 'firebase/database';
 import app from '../firebase/clientApp';
 import { useObjectVal } from 'react-firebase-hooks/database';
+
 import useSWR from 'swr';
 // import '../styles/index.module.scss';
 const Home = () => {
@@ -19,6 +20,10 @@ const Home = () => {
 
   const [bool, setBool] = useState<Boolean>(true);
   const [create, setCreate] = useState<Input>({ chatname: '', password: '' });
+  const { data, error } = useSWR(
+    `https://nextchat-73718-default-rtdb.firebaseio.com/${create.chatname}.json`,
+    (url) => fetch(url).then((res) => res.json())
+  );
 
   const createChatroom = () => {
     if (!user) {
@@ -27,9 +32,7 @@ const Home = () => {
     if (create.chatname === '' || create.password === '') {
       return alert('Please Fill in All Inputs');
     }
-    // check if name of chat already exists
-
-    if (ref(database, `/${create.chatname}`)) {
+    if (data?.password) {
       return alert('Chat name already Exists Please use a different Name');
     }
 
@@ -50,10 +53,7 @@ const Home = () => {
   // const [value, loading, error] = useObjectVal<any>(
   //   ref(database, `${create?.chatname}`)
   // );
-  const { data, error } = useSWR(
-    `https://nextchat-73718-default-rtdb.firebaseio.com/${create.chatname}.json`,
-    (url) => fetch(url).then((res) => res.json())
-  );
+
   const JoinChatroom = () => {
     if (!user) {
       return alert('Must Be Logged In To Create Chatroom');
@@ -67,6 +67,8 @@ const Home = () => {
         pathname: `/chatroom`,
         query: { password: create.password, chatname: create.chatname },
       });
+    } else {
+      alert('Please Enter the Correct Password');
     }
   };
 
