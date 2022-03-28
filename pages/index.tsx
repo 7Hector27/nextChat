@@ -6,7 +6,9 @@ import { useEffect, useState } from 'react';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
 import app from '../firebase/clientApp';
 import { useObjectVal } from 'react-firebase-hooks/database';
-
+// import BlueHome from '../public/images/BlueHome.jpg';
+import Image from 'next/image';
+// const logo = require('../public/images/BlueHome.jpg');
 import useSWR from 'swr';
 // import '../styles/index.module.scss';
 const Home = () => {
@@ -156,7 +158,13 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className={styles.column2}></div>
+        <div className={styles.column2}>
+          <img
+            src={'/BlueHome.jpg'}
+            alt='BlueHome'
+            className={styles.column2img}
+          />
+        </div>
       </div>
     </div>
   );

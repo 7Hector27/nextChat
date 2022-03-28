@@ -35,7 +35,7 @@
       display: flex;
     }
     .leftSide {
-      margin-left: 10%;
+      margin-left: 5%;
 
       .LandingPageName {
         font-size: 2.4rem;
@@ -135,18 +135,16 @@
     }
   }
 }
-.column {
-  float: left;
-  width: 50%;
-}
+
 .column2 {
   visibility: hidden;
-  float: left;
-  height: 100%;
-  width: 50%;
-  background-position: center;
-  background-size: cover;
-  background-image: url(/public/BlueHome.jpg);
+  // height: 100%;
+
+  // float: left;
+  // height: 100vh;
+  // width: 50%;
+  // background-position: center;
+  // background-size: cover;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -168,50 +166,57 @@
     height: 80vh;
     .row {
       height: 80vh;
-      .leftSide {
-        .LandingPageName {
-          margin-top: 5%;
-          &::after {
-            content: '|';
-            background: black;
-            display: block;
-            font-size: 3px;
-            font-weight: 900;
+      display: flex;
+      .column {
+        width: 50%;
+        float: left;
+        margin-right: 5rem;
+        .leftSide {
+          margin-left: 8%;
+          .LandingPageName {
+            margin-top: 5%;
+            &::after {
+              content: '|';
+              background: black;
+              display: block;
+              font-size: 3px;
+              font-weight: 900;
+            }
           }
-        }
-        .ButtonTabs {
-          justify-content: flex-start;
-          margin-top: 5%;
-          .CreateButton {
-            width: 9rem;
+          .ButtonTabs {
+            justify-content: flex-start;
+            margin-top: 5%;
+            .CreateButton {
+              width: 9rem;
+            }
+            .JoinButton {
+              width: 9rem;
+            }
           }
-          .JoinButton {
-            width: 9rem;
+          .InputFields {
+            input {
+              width: 22rem;
+            }
           }
-        }
-        .InputFields {
-          input {
+          .CreateJoinButton {
             width: 22rem;
           }
-        }
-        .CreateJoinButton {
-          width: 22rem;
         }
       }
     }
   }
-  .column {
-    width: 60%;
-  }
-
   .column2 {
     float: right;
     height: 100%;
-    width: 40%;
-    background-position: center;
-    background-size: cover;
-    background-image: url(https://media.istockphoto.com/vectors/geometry-minimalist-artwork-poster-with-simple-shape-and-blue-vector-id1256903282?k=20&m=1256903282&s=170667a&w=0&h=LTH8HOGLTl21Z50lfWr4LUToan7KRsJ5jc1tVu9dzUk=);
+    width: 90%;
     visibility: visible;
+    .column2img {
+      height: 100%;
+      width: 100%;
+
+      object-fit: cover;
+      background-size: cover;
+    }
   }
 }
 /* 
@@ -224,41 +229,43 @@
 @media (min-width: $desktopSize) {
   .LandingContainer {
     .row {
-      .leftSide {
-        .LandingPageName {
-          color: #162c49;
-          margin-top: 10%;
-        }
-        .ButtonTabs {
-          margin-top: 12%;
-        }
-        .InputFields {
-          margin-top: 10%;
-          input {
-            width: 27rem;
+      .column {
+        float: left;
+        width: auto;
+        .leftSide {
+          .LandingPageName {
+            color: #162c49;
+            margin-top: 10%;
           }
-        }
-        .CreateJoinButton {
-          width: 27rem;
-          border-radius: 50px;
+          .ButtonTabs {
+            margin-top: 12%;
+          }
+          .InputFields {
+            margin-top: 10%;
+            input {
+              width: 27rem;
+            }
+          }
+          .CreateJoinButton {
+            width: 27rem;
+            border-radius: 50px;
+          }
         }
       }
     }
   }
-  .column {
-    float: left;
-    width: 50%;
-    .LandingPageImg {
-      // background-image: url(https://media.istockphoto.com/vectors/geometry-minimalist-artwork-poster-with-simple-shape-and-blue-vector-id1256903282?k=20&m=1256903282&s=170667a&w=0&h=LTH8HOGLTl21Z50lfWr4LUToan7KRsJ5jc1tVu9dzUk=);
-    }
-  }
   .column2 {
-    float: left;
+    float: right;
     height: 100%;
-    width: 50%;
-    background-position: center;
-    background-size: cover;
-    background-image: url(https://media.istockphoto.com/vectors/geometry-minimalist-artwork-poster-with-simple-shape-and-blue-vector-id1256903282?k=20&m=1256903282&s=170667a&w=0&h=LTH8HOGLTl21Z50lfWr4LUToan7KRsJ5jc1tVu9dzUk=);
+    width: 90%;
     visibility: visible;
+    background-color: #4c80e5;
+    .column2img {
+      height: 100%;
+      width: 100%;
+
+      object-fit: contain;
+      background-size: cover;
+    }
   }
 }
